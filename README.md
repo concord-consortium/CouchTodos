@@ -1,14 +1,13 @@
-=============================================================================
-Project:   Todos
-Copyright: ©2010 Ido Ran (ido.ran@gmail.com)
-=============================================================================
+# Project:   Todos
+## Copyright: ©2010 Ido Ran (ido.ran@gmail.com)
+
 
 SproutCore Todos sample application [https://sproutcore.pbworks.com/Todos%C2%A0Intro] implemented with CouchDB backend.
 The special peace of this project is the DataSource which know to work with CouchDB documents.
 
 RPK 10/27/10:
 
-Modifications for running with CouchDB proxied at /db/ on a Mac:
+### Modifications for running with CouchDB proxied at `/db/` on a Mac:
 
  * install CouchDB (on OS X):
 
@@ -30,7 +29,7 @@ Modifications for running with CouchDB proxied at /db/ on a Mac:
      # Virtual hosts
      Include /private/etc/apache2/extra/httpd-vhosts.conf
 
- * add a line to the `/etc/hosts` as follows:
+ * add the following line to the `/etc/hosts`:
  
    127.0.0.1	sc.local
    
@@ -56,10 +55,10 @@ Modifications for running with CouchDB proxied at /db/ on a Mac:
      </VirtualHost>
      
   * restart apache:
-    apachectl configtest
-    sudo apachectl restart
+    $ apachectl configtest
+    $ sudo apachectl restart
     
 
-You should now be able to run the Todos application by visiting http://sc.local/
+The couchdb database should be accessible at http://sc.local/db/
 
-The couchdb database should be accessibel
+You should be able to run the Todos application by visiting http://sc.local/
