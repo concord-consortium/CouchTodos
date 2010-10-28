@@ -17,15 +17,15 @@ Todos.TASKS_QUERY = SC.Query.local(Todos.Task, {
 Todos.TaskDataSource = SC.DataSource.extend(
 /** @scope Todos.TaskDataSource.prototype */ {
 
-	_dbpath: 'todos',
+	_dbpath: '/db/todos/',
 
 	 getServerPath: function(resourceName) {
-	   var path = '/' + this._dbpath + "//" + resourceName;
+	   var path = this._dbpath + resourceName;
 	   return path;
 	 },
 	
 	getServerView: function(viewName) {
-		var path = '/' + this._dbpath + "/_design/app/_view/" + viewName;
+		var path = this._dbpath + "_design/app/_view/" + viewName;
 		return path;
 	},
 
