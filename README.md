@@ -32,7 +32,7 @@ RPK 10/27/10:
 
 #### add the following line to the `/etc/hosts`:
  
-    `127.0.0.1 sc.local`
+    127.0.0.1 sc.local
 
 #### add the following to `/private/etc/apache2/extra/httpd-vhosts.conf`:
  
