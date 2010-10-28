@@ -1,9 +1,10 @@
 # Project:   Todos
+
 ## Copyright: ©2010 Ido Ran (ido.ran@gmail.com)
 
-
-SproutCore Todos sample application [https://sproutcore.pbworks.com/Todos%C2%A0Intro] implemented with CouchDB backend.
-The special peace of this project is the DataSource which know to work with CouchDB documents.
+SproutCore Todos sample application <https://sproutcore.pbworks.com/Todos%C2%A0Intro> implemented with a CouchDB
+backend. The special contribution of this project is the DataSource which knows how to work with CouchDB
+documents.
 
 RPK 10/27/10:
 
@@ -31,7 +32,7 @@ RPK 10/27/10:
 
 #### add the following line to the `/etc/hosts`:
  
-   127.0.0.1	sc.local
+    `127.0.0.1 sc.local`
 
 #### add the following to `/private/etc/apache2/extra/httpd-vhosts.conf`:
  
@@ -61,4 +62,4 @@ RPK 10/27/10:
     
 
 The couchdb database should be accessible at <http://sc.local/db/>. You should be able to run the Todos
-application by visiting <http://sc.local/>.
+application by visiting <http://sc.local/todos>.
