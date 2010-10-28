@@ -48,9 +48,9 @@ RPK 10/27/10:
         Allow from 127.0.0.1
       </Proxy>
 
-      ProxyPass /db/ http://127.0.0.1:5984/ nocanon
+      ProxyPass /db/ http://127.0.0.1:5984/ nocanon retry=0
       ProxyPassReverse /db/ http://127.0.0.1:5984/
-      ProxyPass / http://127.0.0.1:4020/
+      ProxyPass / http://127.0.0.1:4020/ retry=0
       ProxyPassReverse / http://127.0.0.1:4020/
 
     </VirtualHost>
