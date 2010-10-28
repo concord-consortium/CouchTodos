@@ -9,56 +9,56 @@ RPK 10/27/10:
 
 ### Modifications for running with CouchDB proxied at `/db/` on a Mac:
 
- * install CouchDB (on OS X):
+#### install CouchDB (on OS X):
 
-     $ sudo port install couchdb
-     $ sudo dscl localhost
+      $ sudo port install couchdb
+      $ sudo dscl localhost
       > cd /Local/Default/Users
-     /Local/Default/Users > change couchdb dsAttrTypeNative:home /dev/null /opt/local/var/lib/couchdb
-     /Local/Default/Users > change couchdb dsAttrTypeNative:shell /dev/null /bin/bash
+      /Local/Default/Users > change couchdb dsAttrTypeNative:home /dev/null /opt/local/var/lib/couchdb
+      /Local/Default/Users > change couchdb dsAttrTypeNative:shell /dev/null /bin/bash
 
-     $ sudo chown -R couchdb:couchdb /opt/local/var/lib/couchdb
-     $ sudo chown -R couchdb:couchdb /opt/local/var/log/couchdb
-     $ sudo chown -R couchdb:couchdb /opt/local/etc/couchdb
-     $ sudo launchctl load -w /Library/LaunchDaemons/org.apache.couchdb.plist
+      $ sudo chown -R couchdb:couchdb /opt/local/var/lib/couchdb
+      $ sudo chown -R couchdb:couchdb /opt/local/var/log/couchdb
+      $ sudo chown -R couchdb:couchdb /opt/local/etc/couchdb
+      $ sudo launchctl load -w /Library/LaunchDaemons/org.apache.couchdb.plist
      
- * Turn on Web Sharing (Apple Menu > System Preferences > Sharing > Web Sharing)
+#### Turn on Web Sharing (Apple Menu > System Preferences > Sharing > Web Sharing)
  
- * if necessary, uncomment the vhosts line in `/private/etc/apache2/httpd.conf' so it looks like the following:
+#### if necessary, uncomment the vhosts line in `/private/etc/apache2/httpd.conf' so it looks like the following:
  
-     # Virtual hosts
-     Include /private/etc/apache2/extra/httpd-vhosts.conf
+    # Virtual hosts
+    Include /private/etc/apache2/extra/httpd-vhosts.conf
 
- * add the following line to the `/etc/hosts`:
+#### add the following line to the `/etc/hosts`:
  
    127.0.0.1	sc.local
-   
- * add the following to `/private/etc/apache2/extra/httpd-vhosts.conf`:
+
+#### add the following to `/private/etc/apache2/extra/httpd-vhosts.conf`:
  
-     <VirtualHost *:80>
-       ServerAdmin webmaster@localhost
-       DocumentRoot "/opt/local/www/dummy"
-       ServerName sc.local
-       ProxyRequests Off
-       KeepAlive Off
-       <Proxy *>
-          Order deny,allow
-          Deny from all
-          Allow from 127.0.0.1
-       </Proxy>
+    <VirtualHost *:80>
+      ServerAdmin webmaster@localhost
+      DocumentRoot "/opt/local/www/dummy"
+      ServerName sc.local
+      ProxyRequests Off
+      KeepAlive Off
+      <Proxy *>
+        Order deny,allow
+        Deny from all
+        Allow from 127.0.0.1
+      </Proxy>
 
-        ProxyPass /db/ http://127.0.0.1:5984/ nocanon
-        ProxyPassReverse /db/ http://127.0.0.1:5984/
-        ProxyPass / http://127.0.0.1:4020/
-        ProxyPassReverse / http://127.0.0.1:4020/
+      ProxyPass /db/ http://127.0.0.1:5984/ nocanon
+      ProxyPassReverse /db/ http://127.0.0.1:5984/
+      ProxyPass / http://127.0.0.1:4020/
+      ProxyPassReverse / http://127.0.0.1:4020/
 
-     </VirtualHost>
+    </VirtualHost>
      
-  * restart apache:
+#### restart apache:
+
     $ apachectl configtest
     $ sudo apachectl restart
     
 
-The couchdb database should be accessible at http://sc.local/db/
-
-You should be able to run the Todos application by visiting http://sc.local/
+The couchdb database should be accessible at <http://sc.local/db/>. You should be able to run the Todos
+application by visiting <http://sc.local/>.
